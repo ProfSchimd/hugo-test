@@ -5,7 +5,9 @@ align: justify
 ---
 
 ## Leggere e scrivere la RAM
-Un programma non potrebbe fare molto senza utilizzare la memoria RAM per tanti motivi:
+Un programma non potrebbe fare molto senza utilizzare la memoria RAM per tanti motivi: 
+
+$$\sum_{i=1}^{n}{i}$$
 
 * le *istruzioni* sono nella RAM;
 * i *dati* sono nella RAM;
@@ -22,18 +24,22 @@ Alcune architetture di processori vengono dette **Load-Store** perché non perme
 
 **Somma in RISC-V (architettura load-store)**
 
-    lw   a0, 0(x0)
-    lw   a1, 4(x0)
-    add  a0, a0, a1
-    sw   a0, 8(x0)
+{{< highlight nasm >}}
+lw   a0, 0(x0)
+lw   a1, 4(x0)
+add  a0, a0, a1
+sw   a0, 8(x0)
+{{< / highlight >}}
 
 **Somma in x86 (architettura non load-store)**
 
-    mov  eax, dword ptr [0]
-    add  eax, dword ptr [4]
-    mov  dword ptr [8], eax
+{{< highlight nasm >}}
+mov  eax, dword ptr [0]
+add  eax, dword ptr [4]
+mov  dword ptr [8], eax
+{{< / highlight >}}
 
-* [Load-Store su Wikipedia[(https://en.wikipedia.org/wiki/Load%E2%80%93store_architecture)
+* [Load-Store su Wikipedia](https://en.wikipedia.org/wiki/Load%E2%80%93store_architecture)
 
 ## Indirizzamento della RAM
 Quando si legge o scrive dalla RAM è necessario avere un modo per indicare l'indirizzo della cella di memoria da leggere o scrivere, il modo in cui si indica la cella di memoria viene detto <strong class="text-danger">indirizzamento della memoria</strong> (*memory addressing*).
