@@ -1,4 +1,4 @@
-baseURL = 'https://skimmy.gitlab.io/first-hugo-test'
+baseURL = 'https://skimmy.github.io/hugo-test'
 languageCode = 'en-us'
 title = 'Michele Schimd'
 theme = 'skihugo'
