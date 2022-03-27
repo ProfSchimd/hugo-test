@@ -1,3 +1,0 @@
----
-title: Memoria e CPU
----

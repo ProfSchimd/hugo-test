@@ -7,8 +7,6 @@ align: justify
 ## Leggere e scrivere la RAM
 Un programma non potrebbe fare molto senza utilizzare la memoria RAM per tanti motivi: 
 
-$$\sum_{i=1}^{n}{i}$$
-
 * le *istruzioni* sono nella RAM;
 * i *dati* sono nella RAM;
 * i *risultati* vengono scritti nella RAM;

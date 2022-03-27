@@ -1,0 +1,67 @@
+{{ define "main" }}
+<article>
+{{ .Content }}
+
+<div class="row">
+    {{ range where .Sections ".Name" "==" "Materie" }}
+    <div class="col-8">
+      <div class="card border-primary mb-3">
+      <h5 class="card-header"><i class="bi bi-mortarboard"></i> Materie</h5>
+      <div class="card-body text-primary">
+        <ul>
+          {{ range .Sections }}
+        <li><a href="#">{{ .Title }} ({{ .Section }})</a></li>
+         {{ end }}
+        </ul>
+      </div>
+      </div>
+    </div>
+    {{ end }}
+  
+    {{ range where .Sections ".Name" "==" "Classi" }}
+    <div class="col-4">
+      <div class="card border-primary mb-3">
+      <h5 class="card-header"><i class="bi bi-people-fill"></i> Classi</h5>
+      <div class="card-body text-primary">
+        <ul>
+            {{ range .Sections }}
+            <li>{{ .Title }}</li>
+        {{ end }}
+        </ul>
+      </div>
+      </div>
+    </div>
+    {{ end }}
+  </div>
+
+<div>
+<ul>
+{{ range where .Sections ".Name" "==" "Materie" }}
+<li>
+    {{ .Title }} - {{ .Name }} - {{ .Section }}<br />
+    <ul>
+    {{ range .Sections }}
+        <li>{{ .Title }} ({{ .Section }})</li>
+    {{ end }}
+    </ul>
+</li>
+{{ end }}
+</ul>
+</div>
+
+<div>
+    <ul>
+    {{ range where .Sections ".Name" "==" "Classi" }}
+    <li>
+        {{ .Title }} - {{ .Name }} - {{ .Section }}<br />
+        <ul>
+        {{ range .Sections }}
+            <li>{{ .Title }}</li>
+        {{ end }}
+        </ul>
+    </li>
+    {{ end }}
+    </ul>
+    </div>
+</article>
+{{ end }}
