@@ -18,27 +18,22 @@ theme = 'skihugo'
     noClasses=true
 [menu]
 [[menu.main]]
-  identifier = 'content'
-  name = 'Content'
-  description = 'Content of the site'
-  url = '/content/'
+  identifier = 'materie'
+  name = 'Materie'
+  description = 'Lista materie'
+  url = '/materie/'
   weight = -90
 [[menu.main]]
-  identifier = 'content_sr'
-  name = 'SR'
-  parent = 'content'
-  url = '/sr/'
-  weight = 1
-[[menu.main]]
-  identifier = 'classes'
-  name = 'Classes'
-  description = 'List of classes'
-  url = '/classes/'
+  identifier = 'classi'
+  name = 'Classi'
+  description = 'Lista classi'
+  url = '/classi/'
   weight = -70
 [[menu.main]]
   identifier = 'about'
-  name = 'About'
-  description = 'About this site'
+  name = ''
+  pre = '<i class="bi bi-info-circle"></i>'
+  description = 'Informazioni sul sito'
   url = '/about/'
   weight = -50
 
