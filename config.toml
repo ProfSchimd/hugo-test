@@ -15,7 +15,8 @@ theme = 'skihugo'
   [markup.goldmark.renderer]
     unsafe=true
   [markup.highlight]
-    noClasses=true
+    noClasses=false
+    
 [menu]
 [[menu.main]]
   identifier = 'materie'
