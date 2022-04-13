@@ -1,4 +1,5 @@
 baseURL = 'https://profschimd.github.io/hugo-test'
+canonifyURLs = true
 languageCode = 'en-us'
 title = 'Michele Schimd'
 theme = 'skihugo'
