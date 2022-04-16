@@ -63,10 +63,10 @@
 /* Operator */ .chroma .o { color: #555555 }
 /* OperatorWord */ .chroma .ow { color: #000000; font-weight: bold }
 /* Punctuation */ .chroma .p {  }
-/* Comment */ .chroma .c { color: #0099ff; font-style: italic }
-/* CommentHashbang */ .chroma .ch { color: #0099ff; font-style: italic }
-/* CommentMultiline */ .chroma .cm { color: #0099ff; font-style: italic }
-/* CommentSingle */ .chroma .c1 { color: #0099ff; font-style: italic }
+/* Comment */ .chroma .c { color: #8e8e8e; font-style: italic }
+/* CommentHashbang */ .chroma .ch { color: #8e8e8e; font-style: italic }
+/* CommentMultiline */ .chroma .cm { color: #8e8e8e; font-style: italic }
+/* CommentSingle */ .chroma .c1 { color: #8e8e8e; font-style: italic }
 /* CommentSpecial */ .chroma .cs { color: #0099ff; font-weight: bold; font-style: italic }
 /* CommentPreproc */ .chroma .cp { color: #009999 }
 /* CommentPreprocFile */ .chroma .cpf { color: #009999 }
