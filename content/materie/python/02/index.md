@@ -1,5 +1,8 @@
 ---
 title: Primi passi con Python
+summary: "Primissimi programmi/script Python: dal classico Hello World!, all'utilizzo delle liste Python e della list comprehension."
+weight: 20
+repo: "https://github.com/ProfSchimd/python/tree/main/01_python_primi_passi"
 ---
 
 ## Hello World!
@@ -70,3 +73,86 @@ che contiene
 1. nella prima posizione (indice ``0``) il nome del programma (script) eseguito,
 2. nelle rimanenti posizioni gli argomenti passati alla linea di comando.
 
+## Variabili
+Una differenza di Python con linguaggi come Java e C++ è che le variabili
+vengono dichiarate senza tipo
+
+{{<highlight python>}}
+a = 10 # intero
+b = 3.14 # float
+c = 'hello' # stringa
+{{</highlight>}}
+Questo, tuttavia, non vuol dire che Python non sia un linguaggio tipizzato.
+Ad esempio, le seguenti istruzioni (successivamente a quelle sopra), falliscono
+generando l'errore riportato sotto.
+{{<highlight python>}}
+d = a - 1 # Ok
+e = c + a # Errore
+{{</highlight>}}
+
+    Traceback (most recent call last):
+    File "vars.py", line 5, in <module>
+        e = c + a
+    TypeError: can only concatenate str (not "int") to str
+
+Giustamente, Python si lamenta che (secondo lui) non ha senso
+*concatenare* (operatore ``+`` su stringhe) una stringa e un intero.
+Il modo giusto per ottenere l'effetto di creare la string ``hello10``
+è convertire prima l'intero ``a`` in stringa, questo è possibile
+utilizzando la funzione *built-in* ``str``
+{{<highlight python>}}
+e = c + str(a) # Ok
+print(e)
+{{</highlight>}}
+
+Oltre a ``str`` sono disponibili altre funzioni per le conversioni "basilari":
+* ``int(x)`` converte l'argomento ``x`` in intero,
+* ``float(x)`` converte l'argomento ``x`` in numero decimale (*floating point*).
+
+{{<exercise>}}
+Scrivere un programma che calcola la media di 3 numero forniti dalla riga di comando
+(per accedere agli elementi di una lista, si usa la notazione indice ``v[i]`` con indice
+che prende i valori ``0,1,2,...``).
+{{</exercise>}}
+
+### Operatori
+Python possiede tutti gli operatori aritmetici e logici che sono presenti nei linguaggi
+di programmazione. Qui presentiamo solo i più importanti di questi operatori, una lista
+più esauriente si può trovare a [questa pagina](https://www.w3schools.com/python/python_operators.asp).
+
+{{<table>}}
+| Operatore | Nome             | Esempio       |
+|-----------|------------------|---------------|
+|  ``+ ``   | Addizione        | 1 + 3 = 5     |
+|  ``-``    | Sottrazione      | 3.5 - 2 = 1.5 |
+|  ``*``    | Moltiplicazione  | 4 * 4 = 16    |
+|  ``/``    | Divisione	       | 5 / 10 = 0.5  |	
+|  ``%``    | Resto	           | 4 % 3 = 1	   |
+|  ``**``   | Potenza	       | 2 ** 3 = 8	   |
+|  ``//``   | Divisione intera | 5 // 2 = 1    |
+{{</table>}}
+
+{{<exercise>}}
+Scrivere un programma che faccia la *divisione euclidea* di un intero ``n`` per un
+intero ``m`` fornendo un intero ``q`` (*quoziente*) e un intero ``r`` (*resto*) tali
+che
+\\[ n = mq + r \\]
+i valori di input ``n`` ed ``m`` vanno presi dalla riga di comando.
+{{</exercise>}}
+
+## Funzioni
+
+## Liste
+
+Le liste sono la struttura dati più utilizzata in Python che, infatti, non
+prevede una struttura simile agli *array* Java e C/C++. Normalmente, tutto
+quello che si fa con gli array, in Python lo si fa con le liste che in aggiunta
+offrono delle funzionalità avanzate rispetto agli array. Un'intera lezione
+sarà dedicata alle liste, ma è bene conoscerne le basi al più presto per poter
+sfruttare al meglio le potenzialità del linguaggio Python.
+
+### Creare liste
+
+### Indicizzazione di una lista
+
+### List comprehension
