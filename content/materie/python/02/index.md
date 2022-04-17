@@ -3,6 +3,7 @@ title: Primi passi con Python
 summary: "Primissimi programmi/script Python: dal classico Hello World!, all'utilizzo delle liste Python e della list comprehension."
 weight: 20
 repo: "https://github.com/ProfSchimd/python/tree/main/01_python_primi_passi"
+quiz_page: "quiz"
 ---
 
 ## Hello World!
