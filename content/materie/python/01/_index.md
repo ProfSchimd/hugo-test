@@ -1,6 +1,8 @@
 ---
 title: Installazione Python
 summary: "Alcuni tra i modi più semplici e diretti per installare Python sulla propria macchina di sviluppo."
+type: "lecture"
+number: 1
 weight: 10
 ---
 
@@ -10,4 +12,6 @@ tra i più facili.
 
 
 ## Installer "standard"
-Visitando il sito [Python.org](https://www.python.org/)
+Visitando il sito [Python.org][1]
+
+[1]: https://www.python.org/
