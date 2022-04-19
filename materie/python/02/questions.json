@@ -104,6 +104,14 @@
         "correct": 0,
         "weight": 1,
         "hint": ""
+    },
+    {
+        "id": "008",
+        "type": "fill",
+        "text": "Completa l'istruzione per stampare a video la stringa <code>Ciao</code><br><code>{{0}}('Ciao')</code>",
+        "correct": [
+            "print"
+        ]
     }
 
 ]
