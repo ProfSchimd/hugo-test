@@ -130,6 +130,20 @@ function makeMultipleTypeQuestion(question) {
     return optionsDiv;
 }
 
+function makeFillTypeQuestion(question, questionNumber) {
+    
+    var questionDisplayNumber = parseInt(questionNumber) + 1;
+    var textDiv = makeQuestionText(`${questionDisplayNumber}.`, question.text);
+    var substituted = `${questionDisplayNumber}. ${question.text}`;
+    for(var i = 0; i < question.correct.length; i++) {
+        var searchPattern = `{{${i}}}`;
+        var inputHTML = `<input type="text" id="ans-${question.id}-${i}" aria-label="inpt risposta">`
+        substituted = substituted.replace(searchPattern, inputHTML);
+    }
+    textDiv.innerHTML = substituted;
+    return textDiv;
+}
+
 function makeResultMessage(correct) {
     var mainDiv = document.createElement('div');
     var textClass = correct ? 'text-success' : 'text-danger';
@@ -173,20 +187,32 @@ function checkAnswer(event) {
                     
                     for (var opt = 0; opt < correctness.length; opt++) {
                         var checkBox = document.querySelector(`#ans-${question.id}-${opt}`);
-                        console.log(checkBox);
                         if (correctness[opt] === 1) {
                             scoreArray[opt] = checkBox.checked ? 1 : -1;
                         } else {
                             scoreArray[opt] = checkBox.checked ? -1 : 1;
                         }
                     }
-                    console.log(scoreArray);
                     var totalScore = scoreArray.reduce(
                         (prevVal, currVal) => prevVal + currVal, 0
-                    )
+                    );
                     var contentDiv = document.querySelector(`#question-${question.id}`);
                     contentDiv.appendChild(makePointsMessage(totalScore, correctness.length, -correctness.length));
-                    console.log(totalScore);
+                    break;
+                case "fill":
+                    var answers = question.correct;
+                    var scoreArray = new Array(answers.length);
+                    for (var j = 0; j < answers.length; j++) {
+                        var inputId = `#ans-${question.id}-${j}`;
+                        var inputEl = document.querySelector(inputId);
+                        ans = inputEl.value;
+                        scoreArray[j] = (answers[j] === ans) ? 1 : 0;
+                    }
+                    var totalScore = scoreArray.reduce(
+                        (prevVal, curVal) => prevVal + curVal, 0
+                    );
+                    var contentDiv = document.querySelector(`#question-${question.id}`);
+                    contentDiv.appendChild(makePointsMessage(totalScore, answers.length, 0));
                     break;
                 default:
                     break;
@@ -214,13 +240,18 @@ function showQuestions(data, parentDivId) {
             case "multiple":
                 optionsDiv = makeMultipleTypeQuestion(question);
                 break;
+            case "fill":
+                questionDiv = makeFillTypeQuestion(question, i);
+                break;
             default:
                 break;
         }
 
         var checkResultButton = makeCheckButton(CHECK_STRING, checkAnswer);
         contentDiv.appendChild(questionDiv);
-        contentDiv.appendChild(optionsDiv);
+        if (optionsDiv) {
+            contentDiv.appendChild(optionsDiv);
+        }
         parentDiv.appendChild(contentDiv);
 
     }

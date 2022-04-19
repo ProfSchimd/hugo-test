@@ -3,10 +3,6 @@
 {{ end }}
 {{ define "main" }}
 <main>
-  {{ range .Resources }}
-  {{ .Permalink }}<br>
-  {{ end }}
-  {{ with .Site.GetPage "/materie/python/02/quiz.md"}}|{{ . }}|{{ end }}
   {{ partial "single-content-head.html" . }}
   <article>
     <div class="container" style="text-align: justify">

@@ -1,5 +1,6 @@
 ---
 title: Python quiz
+type: quiz
 quiz: true
 ---
 
