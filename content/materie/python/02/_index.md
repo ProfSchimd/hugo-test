@@ -144,18 +144,23 @@ i valori di input ``n`` ed ``m`` vanno presi dalla riga di comando.
 {{</exercise>}}
 
 ## Funzioni
+È sempre buona norma dividere il codice in *blocchi* ognuno dei quali si occupa di risolvere un
+problema ben specifico. Il modo più semplice di dividere in blocchi è utilizzando le **funzioni**
+o *subroutine* (un altro modo è utilizzando la programmazione ad oggetti che tratteremo in una
+lezione futura).
 
-## Liste
+In Python una funzione si dichiara utilizzando la parola chiave ``def``, seguita dalla **firma**
+della funzione:
+* nome della funzione e
+* lista dei parametri.
+In Python il tipo ritornato da una funzione ed il tipo dei parametri non sono
+obbligatori (nelle prime versioni di Python non erano previste, ma più di recente è stata
+introdotta la possibilità di indicare i tipo). Ad esempio la seguente funzione può avere
+un risultato diverso in base ai parametri che vengono passati
 
-Le liste sono la struttura dati più utilizzata in Python che, infatti, non
-prevede una struttura simile agli *array* Java e C/C++. Normalmente, tutto
-quello che si fa con gli array, in Python lo si fa con le liste che in aggiunta
-offrono delle funzionalità avanzate rispetto agli array. Un'intera lezione
-sarà dedicata alle liste, ma è bene conoscerne le basi al più presto per poter
-sfruttare al meglio le potenzialità del linguaggio Python.
+{{<highlight python linenos>}}
+def somma(a,b):
+    return a + b
+{{</highlight>}}
+## Input
 
-### Creare liste
-
-### Indicizzazione di una lista
-
-### List comprehension
