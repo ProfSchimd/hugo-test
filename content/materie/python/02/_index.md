@@ -76,6 +76,13 @@ che contiene
 1. nella prima posizione (indice ``0``) il nome del programma (script) eseguito,
 2. nelle rimanenti posizioni gli argomenti passati alla linea di comando.
 
+{{<observe>}}
+Come tutti i linguaggi di programmazione, anche Python ha i **commenti**. Un commento
+inizia con il carattere *sharp* ``#`` (cancelletto) e termina con la fine della riga.
+Non è prevista una sintassi apposita per i *blocchi di commento*, bisogna quindi
+utilizzare un ``#`` ad ogni inizio di riga di commento.
+{{</observe>}}
+
 ## Variabili
 Una differenza di Python con linguaggi come Java e C++ è che le variabili
 vengono dichiarate senza tipo
@@ -140,7 +147,8 @@ Scrivere un programma che faccia la *divisione euclidea* di un intero ``n`` per 
 intero ``m`` fornendo un intero ``q`` (*quoziente*) e un intero ``r`` (*resto*) tali
 che
 \\[ n = mq + r \\]
-i valori di input ``n`` ed ``m`` vanno presi dalla riga di comando.
+i valori di input ``n`` ed ``m`` vanno presi dalla riga di comando mentre i valori
+di output ``q`` ed ``r`` vanno stampati sulla console.
 {{</exercise>}}
 
 ## Funzioni
@@ -153,14 +161,145 @@ In Python una funzione si dichiara utilizzando la parola chiave ``def``, seguita
 della funzione:
 * nome della funzione e
 * lista dei parametri.
+
+{{<highlight python>}}
+def nomeFunzione(parametro1, parametro2, ...):
+    istruzione1
+    istruzione2
+    # ...
+    return valoreDaRestituire
+{{</highlight>}}
+
 In Python il tipo ritornato da una funzione ed il tipo dei parametri non sono
 obbligatori (nelle prime versioni di Python non erano previste, ma più di recente è stata
-introdotta la possibilità di indicare i tipo). Ad esempio la seguente funzione può avere
-un risultato diverso in base ai parametri che vengono passati
+introdotta la possibilità di indicare i tipo). Ad esempio la funzione ``somma`` del codice
+sotto, avrà risultati diverso in base ai parametri forniti
 
-{{<highlight python linenos>}}
-def somma(a,b):
+{{<highlight python "linenos=table">}}
+def somma(a, b):
     return a + b
+
+def main():
+    print(somma(1,2))
+    print(somma("1", "2"))
+
+if __name__ == "__main__":
+    main()
 {{</highlight>}}
+
+### Valori di ritorno
+Per ritornare un valore da una funzione in Python si usa l'istruzione ``return``. Nell'esempio
+visto sopra, la funziona ``somma`` restituisce il risultato dell'operazione ``a + b``. L'istruzione
+``return`` fa anche terminare l'esecuzione della funzione ovunque questa si trovi
+
+Le funzioni Python ritornano sempre un valore, quando questo non è esplicitato dal
+programmatore, questo valore è ``None``.
+
+{{<highlight python "linenos=table">}}
+def noneReturn():
+    pass
+
+a = noneReturn()
+print(a)
+{{</highlight>}}
+
+In questo esempio si vede anche come creare un blocco che non ha alcuna istruzione (in questo caso
+si tratta di un blocco funzione, ma lo stesso si può fare con blocchi cicli e classi).
+
+#### Ritornare più valori
+Altra caratteristica interessante di Python, è la possibilità che una funziona restituisca più di un
+valore
+{{<highlight python "linenos=table">}}
+def minmax(a, b):
+    return min(a,b), max(a,b)
+
+def main():
+    print(minmax(3,1))
+    
+if __name__ == "__main__":
+    main()
+{{</highlight>}}
+
+Nell'esempio sopra, la funzione ``minmax`` restituisce due valori: il minimo ed il massimo dei due
+parametri passati in ingresso.
+
+{{<observe>}}
+Nell'esempio di codice ``minmax`` si può vedere l'utilizzo di due altre funzioni standard di Python:
+``min`` restituisce il minimo tra **2 o più valori** e ``max`` restituisce il massimo tra **2 o più
+valori**.  
+{{</observe>}}
+
+{{<exercise>}}
+Ri-scrivere il codice per la *divisione euclidea* (vedi sopra) utilizzando una funzione che
+prende in input ``n`` ed ``m`` e che restituisce i valori ``q`` e ``r``.
+{{</exercise>}}
+
+{{<exercise title="Equazione di secondo grado">}}
+Scrivere una funzione Python ``secondoGrado`` che calcola le soluzioni dell'equazione
+
+$$ ax^2 + bx + c = 0 $$
+
+quando \\(a\\), \\(b\\) e \\(c\\) sono input della funzione e le due soluzioni \\(x_1\\) e \\(x_2\\)
+sono output. Per calcolare \\(\sqrt{x}\\) si può usare la funzione ``sqrt(x)`` attraverso il pacchetto
+``math`` che va importato
+{{<highlight python>}}
+import math
+...
+def secondoGrado(a, b, c):
+    ...
+    # mette in 'r' la radice quadrata di 'discriminante'
+    r = math.sqrt(discriminate) 
+    ...
+{{</highlight>}}
+{{</exercise>}}
+
+In Python è possibile catturare valori di ritorno multipli sia utilizzando le *tuple*, sia utilizzando
+le variabili. Ad esempio per mettere minimo e massimo in due variabile usando la nostra funzione ``minmax``
+possiamo usare il seguente codice
+{{<highlight python "linenos=table">}}
+minimo, massimo = minmax(3, 1)
+print(minimo) # stampa 1
+print(massimo) # stampa 3
+{{</highlight>}}
+
+{{<attention>}}
+Quando si usano funzioni con più valori ritornati bisogna fare attenzione a cosa viene *catturato*.
+{{<highlight python>}}
+v = minmax(2, -1)
+print(v) # stampa (-1, 2) -> tupla
+v, w = minmax(2, -1)
+print(v) # stampa -1 -> intero
+{{</highlight>}}
+A sinistra dell'uguale ci può essere 
+
+* una sola variabile questa variabile sarà una tupla se la funzione restituisce più di un valore
+* un numero variabili **uguale** al numero di variabili restituite dalla funzione
+
+In tutti gli altri casi l'interprete Python darà un messaggio d'errore simile al seguente
+
+    Traceback (most recent call last):
+    File "<pyshell>", line 1, in <module>
+    ValueError: too many values to unpack (expected 2)
+
+{{</attention>}}
+
 ## Input
+Chiedere l'input da tastiera in Python è molto semplice, basta usare la funzione ``input`` la quale
+si metterà in attesa di un input dalla tastiera
+{{<highlight python "linenos=table">}}
+nome = input()
+  Mario
+print(nome) # stampa 'Mario'
+{{</highlight>}}
+È possibile indicare una stringa come parametri di ``input`` per aiutare a comprendere l'input richiesto
+{{<highlight python "linenos=table">}}
+nome = input('Nome: ')
+  Nome: Fabio
+print(nome) # stampa 'Fabio'
+{{</highlight>}}
+
+{{<exercise>}}
+Scrivere una funzione Python senza parametri che richieda di inserire in input nome e cognome
+e che restituisca le due stringhe (prima cognome e poi nome).
+{{</exercise>}}
 
