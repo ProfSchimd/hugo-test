@@ -1,0 +1,14 @@
+{{ $thisPageUrl := .Permalink | absURL}}
+{{ with .Parent }}
+<h5>{{ .Title }}</h5>
+<ul>
+{{ range .CurrentSection.Pages }}
+{{ $rangePageUrl := .Permalink | absURL }}
+{{ if eq ($thisPageUrl) ($rangePageUrl) }}
+<li><strong><a href="{{ .Permalink }}">>{{ .Title }}</a></strong></li>
+{{ else }}
+<li><a href="{{ .Permalink }}">{{ .Title }}</a></li>
+{{ end }}
+{{ end }}
+</ul>
+{{ end }}

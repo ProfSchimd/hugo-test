@@ -90,7 +90,8 @@ vengono dichiarate senza tipo
 {{<highlight python>}}
 a = 10 # intero
 b = 3.14 # float
-c = 'hello' # stringa
+c = "hello" # stringa
+cc = 'world!' # stringa
 {{</highlight>}}
 Questo, tuttavia, non vuol dire che Python non sia un linguaggio tipizzato.
 Ad esempio, le seguenti istruzioni (successivamente a quelle sopra), falliscono
@@ -293,7 +294,7 @@ print(nome) # stampa 'Mario'
 {{</highlight>}}
 È possibile indicare una stringa come parametri di ``input`` per aiutare a comprendere l'input richiesto
 {{<highlight python "linenos=table">}}
-nome = input('Nome: ')
+nome = input("Nome: ")
   Nome: Fabio
 print(nome) # stampa 'Fabio'
 {{</highlight>}}

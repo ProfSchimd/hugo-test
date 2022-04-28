@@ -18,7 +18,7 @@
         "text": "Quale è la prima istruzione eseguita da un programma Python?",
         "options": [
             "La prima istruzione della prima funzione definita nel file <code>.py</code> invocato",
-            "La prima istruzione della funzione main presente nel file <code>.py</code> invocato.",
+            "La prima istruzione della funzione main codesente nel file <code>.py</code> invocato.",
             "La prima istruzione presente nel file <code>.py</code> invocato con il comando <code>python</code>",
             "La prima istruzione del metodo <code>main</code> della classe presente nel file <code>.py</code> invocato"
         ],
@@ -156,12 +156,42 @@
     {
         "id": "011",
         "type": "single",
-        "text": "...",
+        "text": "Quali di queste istruzioni <strong>non</strong> genera un errore quando eseguita",
         "options": [
-            "<pre>def hello(s):\n   print(s)</pre>"
+            "<code>a = int('1') + 10</code>",
+            "<code>int(`1`) + 10</code>",
+            "<code>a = '1' + 10</code>",
+            "<code>int a = int('1') + 10</code>",
+            "<code>a = int('1' + 10)</code>",
+            "<code>a = \"1\" + 10</code>"
         ],
         "correct": 0,
         "weight": 5,
+        "hint": ""
+    },
+
+    {
+        "id": "012",
+        "type": "fill",
+        "text": "Completa il codice affinché stampi \n<pre>6\n5\n\ndef somma_prodotto(a,b):\n   return a+b, a*b\n\n{{0}}=somma_prodotto(2,3)\nprint(a)\nprint(b)</pre>",
+        "correct": [
+            "b,a"
+        ],
+        "weight": 5
+    },
+
+    {
+        "id": "013",
+        "type": "single",
+        "text": "Qual'è l'istruzione Python per memorizzare in una variabile ``numero`` il valore decimale dato in ingresso?",
+        "options": [
+            "<code>numero = float(input())</code>",
+            "<code>numero = input()</code>",
+            "<code>input(numero)",
+            "<code>input(float(numero))"
+        ],
+        "correct": 0,
+        "weight": 2,
         "hint": ""
     }
 
