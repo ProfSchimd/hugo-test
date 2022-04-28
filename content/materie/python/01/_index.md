@@ -54,11 +54,12 @@ efficace.
 ### ``pip`` e ``venv``
 
 I [Virtual Environments (``venv``)][3] rappresentano un ottimo modo per gestire in maniera intelligente
-i pacchetti e i vari progetti.
+i pacchetti e i vari progetti (in alcuni casi il comando ``python`` potrebbe non funzionare anche se
+l'installazione è andata a buon fine, in questo caso si può provare ``python3``).
 
 * Creazione di un *virtual environment* chiamato ``primo-env``
 
-        python3 -m venv primo-env
+        python -m venv primo-env
 
     questo crea una directory ``primo-env/`` all'interno della quale viene messo il minimo
     indispensabile per eseguire l'interprete ``python``.
@@ -72,7 +73,9 @@ i pacchetti e i vari progetti.
         pip --version
 
     è sempre opportuno eseguire l'aggiornamento del packet manager ``pip`` prima di procedere all'installazione
-    di eventuali pacchetti.
+    di eventuali pacchetti. 
+
+        python -m pip install --upgrade pip
 
 * Per installare un pacchetto con ``pip`` si usa il sotto-comando ``install``
 
@@ -90,10 +93,64 @@ diventa
         python -m pip install numpy
 {{</attention>}}
 
+#### Il file ``requirements.txt``
+Quando si crea un *virtual environment* con tutte le librerie necessarie, può essere utile un modo per portarsi
+questo ambiente in un altro computer o per "passarlo" ad un collega. Per fare questo si può usare una
+funzionalità di ``pip`` che crea un file ``requirements.txt`` che contiene tutte le librerie che devono essere
+installate per far funzionare il programma.
+
+* Per creare il file ``requirements.txt`` da un ambiente con tutte le librerie installate usare il comando ``pip``
+nel seguente modo
+
+        pip freeze > requirements.txt
+
+* Per installare i pacchetti presenti nel ``requirements.txt`` si esegue il comando
+
+        pip install -r requirements.txt
+
+#### Uso di ``pip`` con l'IDE Thonny
+L'ambiente di sviluppo [Thonny][2] permette di usare ``pip`` attraverso l'interfaccia grafica.
+
+Dal menù ``Preferenze`` nella scheda ``Interprete`` si può selezionare *virtual environment*
+indicando poi l'eseguibile (o il collegamento) all'interprete ``python`` del virtual
+environment. È anche possibile creare un virtual environment direttamente da Thonny (vedi immagine
+sotto).
+
+{{<figure src="thonny-interpreter.png" width="600" title="Utilizzo di Thonny con virtual environment">}}
+
+Per installare pacchetti in Thonny (all'interno dell'environment scelto o di quello di
+*default* se non ne viene scelto uno) si usa il menù ``Strumenti`` (``Tools``) e
+``Gestione Pacchetti`` (``Manage packages``). Da questo menù è possibile cercare ed
+installare pacchetti ed è inoltre possibile utilizzare un file ``requirements.txt`` per
+creare un ambiente completo di tutti i pacchetti necessari.
+
+{{<attention>}}
+I pacchetti installati con dal menù ``Strumenti`` di Thonny vengono installati nell'ambiente
+selezionato dal menù ``Preferenze`` di Thonny. Bisogna fare attenzione ad aver selezionato
+l'ambiente giusto prima di installare (o disinstallare) qualsiasi pacchetti.
+{{</attention>}}
 
 ### Conda e Anaconda
-L'installazione dell'interprete
+L'installazione dell'interprete e delle librerie tramite ``pip`` può essere difficoltosa
+soprattutto quando sia necessario ricordarsi il nome di tutti i pacchetti che devono
+essere presenti per far funzionare correttamente il software scritto.
 
+Il comando ``pip`` accetta in ingresso file ``requirements.txt`` che semplificano queste
+operazioni, ma il problema rimane quando si debba creare un ambiente da zero.
+
+[Anaconda][4] e [Conda][5] permettono di gestire pacchetti in maniera più efficace e veloce
+(nel caso di [Anaconda][4] anche con un'interfaccia grafica) per Python, ma anche per altri
+linguaggi.
+
+L'installazione di [Anaconda][4] richiede più spazio di un semplice virtual environment, ma
+offre maggiore flessibilità. La versione *miniconda* è una soluzione "più snella", ma non
+presenta interfaccia grafica. Nel caso in cui si debba usare unicamente il linguaggio Python
+e le sue librerie, può essere meglio usare ``pip`` come packet manager (che, tra l'altro,
+viene utilizzato da anaconda e conda) anziché scegliere una soluzione fin troppo complessa
+come [Anaconda][4].
+ 
 [1]: https://www.python.org/
 [2]: https://thonny.org/
 [3]: https://docs.python.org/3/tutorial/venv.html
+[4]: https://anaconda.com/
+[5]: https://docs.conda.io/

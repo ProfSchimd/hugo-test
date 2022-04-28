@@ -8,5 +8,5 @@ quiz: true
 </div>
 
 <script>
-    quizStart('../questions.json', 'quiz-content');
+    quizStart('../PY.02.Q.json', 'quiz-content');
 </script>

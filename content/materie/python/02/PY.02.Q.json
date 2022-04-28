@@ -111,7 +111,59 @@
         "text": "Completa l'istruzione per stampare a video la stringa <code>Ciao</code><br><code>{{0}}('Ciao')</code>",
         "correct": [
             "print"
-        ]
+        ],
+        "weight": 1,
+        "hint": ""
+    },
+    {
+        "id": "009",
+        "type": "multiple",
+        "text": "Seleziona le frasi <strong>vere</strong> sulle funzioni Python",
+        "options": [
+            "Devono essere dichiarate all'interno di una classe (solo metodi)",
+            "Si dichiarano con la parola chiave <code>def</code>",
+            "Possono avere solo un valore di ritorno",
+            "Possono avere zero, uno o più valori di uscita",
+            "Il tipo del valore ritornato è indicato nella firma della funzione",
+            "Se hanno parametri di ingresso hanno sicuramente parametri di uscita"
+        ],
+        "correct": [
+            0,
+            1,
+            0,
+            1,
+            0,
+            0
+        ],
+        "weight": 3,
+        "hint": ""
+    },
+    {
+        "id": "010",
+        "type": "single",
+        "text": "Seleziona il modo corretto di dichiarare una funzione Python con 3 parametri interi che ritorna un intero.",
+        "options": [
+            "<code>def funzione([a,b,c]):</code>",
+            "<code>def funzione(int a, int b, int c]):</code>",
+            "<code>def funzione(a,b,c):</code>",
+            "<code>int funzione([a,b,c]):</code>"
+        ],
+        "correct": 2,
+        "weight": 2,
+        "hint": ""
+    },
+
+    {
+        "id": "011",
+        "type": "single",
+        "text": "...",
+        "options": [
+            "<pre>def hello(s):\n   print(s)</pre>"
+        ],
+        "correct": 0,
+        "weight": 5,
+        "hint": ""
     }
+
 
 ]
