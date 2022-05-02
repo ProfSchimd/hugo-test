@@ -284,6 +284,44 @@ In tutti gli altri casi l'interprete Python darà un messaggio d'errore simile a
 
 {{</attention>}}
 
+### Parametri opzionali e parametri con nome (*named parameters*)
+Come la maggior parte dei linguaggi, anche Python permette l'utilizzo di *valori di default* per i
+parametri di una funzioni. I valori di default sono quelli che il parametro ha quando nulla viene
+indicato nella chiamata.
+
+{{<highlight python "linenos=table">}}
+def saluta(nome="anonimo", cognome=""):
+    print("Hello " + nome + " " + cognome + "!")
+
+saluta() # 'Hello anonimo!'
+saluta("Mario") # 'Hello Mario!'
+saluta("Mario", "Rossi") # 'Hello Mario Rossi!'
+{{</highlight>}}
+
+In questo semplice esempio la funziona ``saluta`` ha due parametri (``nome`` e ``cognome``) che
+hanno un valore di default.
+
+* Quando nessun valore viene passato, i due valori di default vengono utilizzati (sia per ``nome``
+che per ``cognome``).
+* Quando un valore viene passato, solo il secondo viene inizializzato con il valore di default.
+* Infine, quando due valori vengono passati, nessun valore di default viene utilizzato.
+
+Si vede come sia impossibile in questo modo avere un valore assegnato al secondo parametro
+(``cognome``), ma il valore di default per il primo parametro (``nome``). Per fare questo si
+può usare il nome del parametro nella chiamata
+{{<highlight python>}}
+saluta(cognome="ignoto") # 'Hello anonimo ignoto!'
+{{</highlight>}}
+
+I nomi dei parametri si possono anche usare per indicare il valore da dare ai vari parametri
+senza necessariamente mantenere l'ordine con cui sono stati dichiari
+{{<highlight python>}}
+saluta(cognome="Verdi", nome="Andrea") # 'Hello Andrea Verdi!'
+{{</highlight>}}
+Si veda come nell'esempio sopra, prima viene assegnato il valore al parametro ``cognome``
+(che compare secondo nella lista) e poi al parametro ``nome`` (che compare primo
+nella lista).
+
 ## Input
 Chiedere l'input da tastiera in Python è molto semplice, basta usare la funzione ``input`` la quale
 si metterà in attesa di un input dalla tastiera
@@ -303,4 +341,107 @@ print(nome) # stampa 'Fabio'
 Scrivere una funzione Python senza parametri che richieda di inserire in input nome e cognome
 e che restituisca le due stringhe (prima cognome e poi nome).
 {{</exercise>}}
+
+## Condizione ``if``, ``else`` e ``elif``
+{{<highlight python "linenos=table">}}
+def stampaNumero(numero, base=10):
+    if(base == 16):
+        print("{0:x}".format(numero))
+    elif(base == 8):
+        print("{0:o}".format(numero))
+    elif(base == 2):
+        print("{0:b}".format(numero))
+    else:
+        print("{0}".format(numero))
+{{</highlight>}}
+
+## Cicli
+
+### Ciclo ``while``
+In Python è presente il ciclo ``while`` che esegue un gruppo di operazione fino a che
+una certa condizione è vera. La sintassi generica del ciclo ``while`` è la seguente
+{{<highlight python "lineos=table">}}
+while condizione:
+    # operazioni
+    # ...
+# prima istruzione dopo il ciclo
+{{</highlight>}}
+
+Si noti come le istruzioni del ciclo iniziano con una indentazione (riga 2 sopra)
+e terminano quando questa indentazione "rientra" (riga 4 sopra).
+
+Ad esempio per stampare il *countdown* di capodanno da ``10`` a ``0`` si può il seguente
+ciclo ``while``.
+{{<highlight python "linenos=table">}}
+i = 10
+while i>0:
+    print(i, "...")
+    i -= 1 # Senza il programma non termina!
+print("...Buon 1991")
+{{</highlight>}}
+
+Un esempio più complicato permette di continuare a leggere l'input da tastiera fino a che non viene
+immesso il carattere ``q`` o ``Q``, possiamo usare il seguente ciclo ``while``.
+
+{{<highlight python "linenos=table">}}
+lettura = ""
+while (lettura != "q" and lettura != "Q"):
+    lettura = input("Carattere (q per uscire): ")
+{{</highlight>}}
+
+La condizione controllo che contemporaneamente (operatore logico ``and``):
+1. la variabile ``lettura`` **non** sia uguale alla stringa ``"q"`` **e**
+2. la variabile ``lettura`` **non** sia uguale alla string ``"Q"`` (notare maiuscolo).
+
+Se una delle condizione (o entrambe) **non** sono vere, allora la condizione del
+``while`` non è più vera ed il ciclo termina.
+
+### Ciclo ``for``
+Oltre al ciclo ``while``, Python prevede un solo altro tipo di ciclo, il ciclo ``for``.
+Il ``for`` di Python è di tipo *for each* cioè itera ogni elemento di un un oggetto che,
+ovviamente, deve essere *iterabile*. Un esempio di oggetto iterabile sono le liste
+{{<highlight python>}}
+lista = [0,1,2,3,4,5,6,7,8,9]
+{{</highlight>}}
+
+La sintassi del ``for`` è la seguente
+{{<highlight python>}}
+for variabile in iterabile:
+    # operazioni
+    # ...
+# prima istruzione dopo il ciclo
+{{</highlight>}}
+
+Esattamente come nel ciclo ``while``, l'indentazione del codice è usata per le operazioni
+all'interno del ciclo.
+
+{{<example>}}
+Stampare il numero \\(x^2\\) (\\(x\\) al quadrato) per ogni intero \\(x\\) tra 1 e 9
+{{<highlight python "linenos=table">}}
+lista = [1, 2, 3, 4, 5, 6, 7, 8, 9]
+for x in lista:
+    print(x*x) # si può anche scrivere x**2
+{{</highlight>}}
+{{</example>}}
+
+#### La funzione ``range``
+Dichiarare esplicitamente gli elementi su cui iterare è, ovviamente, poco pratico e a volte
+impossibile. Per generare numeri interi in un certo *range* (intervallo) si può usare la
+funzione *built-in* (cioè che fa parte del linguaggio Python) ``range``. Questa funzione
+accetta uno, due o tre parametri e restituisce in oggetto iterabile. Vediamo in generale
+l'utilizzo di ``range``.
+
+{{<highlight python "linenos=table">}}
+# Un parametro 'n' -> 0, 1, 2, ..., n-1
+for i in range(10):
+    print(i) # 0,1,2,...,9
+# Due parametri 'm' e 'n' -> m, m+1, m+2, ..., n-1
+for i in range(5,10):
+    print(i) # 5,6,..,9
+# Tre parametri 'm', 'n' e 'k' -> m, m+k, m+k+k, ...
+for i in range(0, 100, 10):
+    print(i) # 0,10,20,...,90
+{{</highlight>}}
+
+
 

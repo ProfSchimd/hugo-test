@@ -2,6 +2,7 @@
 title: "Laboratorio 1: Calcolatrice"
 weight: 1001
 type: lecture
+summary: "Esercitazione sulle basi del linguaggio Python. Durante il laboratorio si svilupperà una semplice calcolatrice da riga di comando in grado di effettuare le operazioni di base e di memorizzare il risultato per poterlo riutilizzare come variabile."
 ---
 
 ## Esercizio 1: input interattivo (facile)
