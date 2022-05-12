@@ -64,9 +64,14 @@ l'installazione è andata a buon fine, in questo caso si può provare ``python3`
     questo crea una directory ``primo-env/`` all'interno della quale viene messo il minimo
     indispensabile per eseguire l'interprete ``python``.
 
-* Prima di poter utilizzare il *virtual environment* appena creato, è necessario "attivarlo" con il comando
+* Prima di poter utilizzare il *virtual environment* appena creato, è necessario "attivarlo" con il comando (Linux e Mac OS)
 
         source primo-env/bin/activate 
+
+    oppure con il comando (Prompt comandi di Windows)
+
+        primo-env\Scripts\activate.bat
+
 
 * Normalmente, l'*environment* contiene il **packet manager** ``pip``
 
