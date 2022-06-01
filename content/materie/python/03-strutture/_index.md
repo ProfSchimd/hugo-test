@@ -60,7 +60,7 @@ print(lista[0:3]) # elementi dalla posizione 0 (inclusa) alla 3 (esclusa) [0, 1,
 print(lista[:3]) # lo stesso (quando l'inizio è 0 si può omettere)
 print(lista[2:4]) # elementi dalla posizione 2 (inclusa) alla 4 (esclusa) [2, 3]
 print(lista[3::]) # elementi dalla posizione 3 alla fine [3, 4, 5, ..., 9]
-print(lista[::]) # stampa tutta la lista
+print(lista[:]) # stampa tutta la lista (anche lista[::])
 {{</highlight>}}
 * indice **stride**: inizio, fine e passo `lista[inizio:fine:passo]`
 {{<highlight python>}}
@@ -113,6 +113,7 @@ lista = [i*i for i in range(10)]
 {{</highlight>}}
 
 ## Tuple
+Le **tuple** sono simili alle liste 
 
 ## Dizionari
 
