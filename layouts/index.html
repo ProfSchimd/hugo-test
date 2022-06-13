@@ -9,7 +9,7 @@
       <div class="card-body text-primary">
         <ul>
           {{ range .Sections }}
-        <li><a href="{{ .Permalink }}">{{ .Title }} ({{ .Params.code }})</a></li>
+        <li><a href="{{ .Permalink }}">{{ .Title }} {{ with .Param "code" }}({{ . }}){{ end }}</a></li>
          {{ end }}
         </ul>
       </div>
@@ -24,8 +24,9 @@
       <div class="card-body text-primary">
         <ul>
             {{ range .Pages }}
-            <li><a href="{{ .Permalink }}">{{ .Title }} ({{ .Params.subject_s }})</a></li>
-        {{ end }}
+            
+            <li><a href="{{ .Permalink }}">{{ .Title }} {{ with .Param "subject_s" }}({{ . }}){{ end }}</a></li>
+            {{ end }}
         </ul>
       </div>
       </div>
