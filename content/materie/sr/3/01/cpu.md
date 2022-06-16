@@ -1,5 +1,6 @@
 ---
-title: CPU
+title: Central Processing Unit (CPU)
+weight: 20
 ---
 
 ## Central Processing Unit (CPU)
