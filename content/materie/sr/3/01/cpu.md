@@ -1,6 +1,7 @@
 ---
 title: Central Processing Unit (CPU)
 weight: 20
+summary: "La CPU è il centro operativo di un sistema di elaborazione dati, essa permette di fare operazioni semplici, ma in modo veloce. Capire come funziona la CPU è fondamentale per scrivere programmi che siano efficienti."
 ---
 
 ## Central Processing Unit (CPU)

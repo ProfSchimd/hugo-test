@@ -34,6 +34,7 @@ The website works properly if the requires information is set up during the conv
 * `repo`: contains a link to the repository (*e.g.*, GitHub) with the appropriate source code of the lecture.
 * `quiz_source`: contains the `json` file name source of the quiz questions for the lecture.
 * `exercise_source`: contains the `json` file name source of the exercises for the lecture.
+* `unlisted`: if set prevents the page to be listed in the `list.html` template.
 
 
 [1]: https://gohugo.io/
